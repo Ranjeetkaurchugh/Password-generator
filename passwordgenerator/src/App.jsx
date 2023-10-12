@@ -20,7 +20,7 @@ function App() {
       str+="!@#$%^&*(){}`";
 
     }
-    for (let index = 1; index < array.length; index++) {
+    for (let index = 1; index <=length; index++) {
     let char = Math.floor(Math.random()* str.length+1);
       pass = str.charAt(char);
       setpassword(pass);
@@ -28,9 +28,9 @@ function App() {
     }
   },[lenght,NumberAllowed,charAllowed,setpassword])
 
-  useEffect(()=>{
+  useEffect(() => {
     passwordGenerator()
-  },[lenght,NumberAllowed,charAllowed])
+  }, [length, NumberAllowed, charAllowed, passwordGenerator])
   
  return (
     <>
@@ -76,7 +76,8 @@ function App() {
             onChange={() => {
                 setcharAllowed((prev) => !prev);
             }}/>
-            <label>Character</label></div>
+            <label>Character</label>
+            </div>
           </div>
         </div>
        
