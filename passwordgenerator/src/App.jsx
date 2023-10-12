@@ -9,13 +9,28 @@ function App() {
   const[charAllowed,setcharAllowed]=useState(false);
   const[password,setpassword]=useState();
   
-  const passwordGenerator = useCallback(fn,[lenght,NumberAllowed,charAllowed,setpassword])
-  
- 
+  const passwordGenerator = useCallback(()=>{
+    let pass= "";
+    let str= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvyxwz";
+    if(NumberAllowed){
+      str+="0123456789";
 
-  return (
+    }
+    if(charAllowed){
+      str+="!@#$%^&*(){}`";
+
+    }
+    for (let index = 1; index < array.length; index++) {
+    let char = Math.floor(Math.random()* str.length+1);
+      pass = str.charAt(char);
+      setpassword(pass);
+      
+    }
+  },[lenght,NumberAllowed,charAllowed,setpassword])
+  
+ return (
     <>
-      <h1 className=' text-white text-center my-3'>Password generator</h1>
+      <div className='w-full  max-w-md  mx-auto shadow-md-rounded-lg px-4 my-8 text-orange-400 bg-gray-700'>test</div>
     </>
   )
 }
