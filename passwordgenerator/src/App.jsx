@@ -4,10 +4,10 @@ import { useState,useCallback ,useEffect} from "react"
 
 
 function App() {
-  const [lenght,setlenght] = useState(8)
+  const [length,setlength] = useState(8)
   const[NumberAllowed,setNumberAllowed]=useState(false);
   const[charAllowed,setcharAllowed]=useState(false);
-  const[password,setpassword]=useState();
+  const[password,setpassword]=useState("");
   
   const passwordGenerator = useCallback(()=>{
     let pass= "";
@@ -22,11 +22,12 @@ function App() {
     }
     for (let index = 1; index <=length; index++) {
     let char = Math.floor(Math.random()* str.length+1);
-      pass = str.charAt(char);
-      setpassword(pass);
-      
+      pass  =pass+ str.charAt(char);
+     
     }
-  },[lenght,NumberAllowed,charAllowed,setpassword])
+    setpassword(pass);
+      
+  },[length,NumberAllowed,charAllowed,setpassword])
 
   useEffect(() => {
     passwordGenerator()
@@ -54,11 +55,11 @@ function App() {
             <input type="range"
             min={8}
             max={50}
-            value={lenght}
+            value={length}
             className="cursor-pointer"
-            onChange={(e)=>{setlenght(e.target.value)}}
+            onChange={(e)=>{setlength(e.target.value)}}
              />
-             <label>Lenght:{lenght}</label>
+             <label>Length:{length}</label>
 
           </div>
           <div className="px-1">
@@ -72,7 +73,7 @@ function App() {
             <div className="px-1">
             <input type="checkbox"
             defaultChecked={charAllowed}
-            id="numberInput"
+            id="characterInput"
             onChange={() => {
                 setcharAllowed((prev) => !prev);
             }}/>
