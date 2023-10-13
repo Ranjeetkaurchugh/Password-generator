@@ -31,6 +31,7 @@ function App() {
   },[length,NumberAllowed,charAllowed,setpassword])//for optimise purpose so that u useEffect se alg hai
   const copyPasswordToClipBoard=useCallback(()=>{
     window.navigator.clipboard.writeText(password)
+    passRef.current?.select();
   },[password])
 
   useEffect(() => {
